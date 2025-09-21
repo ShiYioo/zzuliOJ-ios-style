@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ZZULIOJ iOS Style Modernizer
 // @namespace    https://acm.zzuli.edu.cn/
-// @version      0.1.4
+// @version      0.1.5
 // @description  将 ZZULIOJ 界面美化为类 iOS 扁平圆角半透明风格，支持暗黑模式与快速切换
 // @author       ShiYi
 // @match        *://acm.zzuli.edu.cn/*
@@ -385,6 +385,61 @@
   html.zzuli-ios-theme.zzuli-dark .gutter { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
   html.zzuli-ios-theme .line-numbers-rows > span:before { color: var(--zzuli-muted); }
   html.zzuli-ios-theme.zzuli-dark .line-numbers-rows > span:before { color: var(--zzuli-muted); }
+
+  /* 代码编辑器语法高亮与光标优化（深色模式） */
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror { color: #e7e9ef !important; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-cursor { border-left: 2px solid #fff !important; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-selected { background: rgba(var(--ios-accent-rgb),0.35) !important; }
+  html.zzuli-ios-theme .CodeMirror-focused .CodeMirror-selected { background: rgba(var(--ios-accent-rgb),0.40) !important; }
+  /* CodeMirror 5 token colors */
+  html.zzuli-ios-theme.zzuli-dark .cm-keyword { color: #82AAFF !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-operator { color: #89DDFF !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-variable { color: #ECEFF4 !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-variable-2 { color: #C5E4FF !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-variable-3 { color: #F6C177 !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-def { color: #B3E5FC !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-string { color: #C3E88D !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-number { color: #F78C6C !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-comment { color: #6b7480 !important; font-style: italic; }
+  html.zzuli-ios-theme.zzuli-dark .cm-meta { color: #FFCB6B !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-builtin { color: #FF9CAC !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-tag { color: #7FDBCA !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-attribute { color: #F6C177 !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-atom { color: #FFCB6B !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-error { background: #B00020 !important; color: #fff !important; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-activeline-background { background: rgba(255,255,255,0.06) !important; }
+
+  /* CodeMirror 6 (如果未来升级) */
+  html.zzuli-ios-theme.zzuli-dark .cm-editor { color: #e7e9ef !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-editor .cm-content ::selection { background: rgba(var(--ios-accent-rgb),0.35); }
+  html.zzuli-ios-theme.zzuli-dark .cm-activeLine { background: rgba(255,255,255,0.06) !important; }
+  html.zzuli-ios-theme.zzuli-dark .cm-gutters { background: var(--zzuli-card) !important; color: #6b7480 !important; border-right: 1px solid var(--zzuli-separator) !important; }
+
+  /* Ace Editor dark overrides */
+  html.zzuli-ios-theme.zzuli-dark .ace_editor { color: #E7E9EF !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_cursor { color: #FFFFFF !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_marker-layer .ace_selection { background: rgba(var(--ios-accent-rgb),0.38) !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_marker-layer .ace_active-line { background: rgba(255,255,255,0.06) !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter { color: #6b7480 !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_keyword, 
+  html.zzuli-ios-theme.zzuli-dark .ace_storage { color: #82AAFF !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_operator { color: #89DDFF !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_identifier, 
+  html.zzuli-ios-theme.zzuli-dark .ace_variable { color: #ECEFF4 !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_variable.ace_parameter { color: #C5E4FF !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_support.ace_function, 
+  html.zzuli-ios-theme.zzuli-dark .ace_entity.ace_name.ace_function { color: #B3E5FC !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_string { color: #C3E88D !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_numeric, 
+  html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_numeric { color: #F78C6C !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_comment { color: #6b7480 !important; font-style: italic; }
+  html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_language, 
+  html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_character { color: #FFCB6B !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_other { color: #FF9CAC !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_invalid { background: #B00020 !important; color: #fff !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_markup.ace_heading, 
+  html.zzuli-ios-theme.zzuli-dark .ace_entity.ace_other.ace_attribute-name { color: #F6C177 !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_entity.ace_name.ace_tag { color: #7FDBCA !important; }
 
   /* 分割线 */
   html.zzuli-ios-theme hr {
@@ -797,3 +852,4 @@
     // 延迟执行题目增强，确保 DOM 已渲染
     setTimeout(enhanceProblemPage, 0);
 })();
+
