@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ZZULIOJ iOS Style Modernizer
 // @namespace    https://acm.zzuli.edu.cn/
-// @version      0.1.5
+// @version      0.1.6
 // @description  将 ZZULIOJ 界面美化为类 iOS 扁平圆角半透明风格，支持暗黑模式与快速切换
 // @author       ShiYi
 // @match        *://acm.zzuli.edu.cn/*
@@ -637,6 +637,85 @@
   html.zzuli-ios-theme .panel-footer.zzuli-problem-footer { background:transparent !important; border:none !important; box-shadow:none !important; padding:0 !important; margin-top:12px; }
 
   /* ===== 题目详情页专属增强结束 ===== */
+
+  /* ===== 提交代码页增强样式 ===== */
+  html.zzuli-ios-theme .zzuli-submit-wrapper { background: var(--zzuli-card); border:1px solid var(--zzuli-separator); border-radius:28px; padding:32px 34px 28px; box-shadow: var(--zzuli-shadow); max-width:1200px; margin:0 auto 42px; position:relative; }
+  html.zzuli-ios-theme .zzuli-submit-wrapper.zzuli-fullscreen { position:fixed; inset:16px; z-index:99990; overflow:auto; backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); animation:zzuliFadeIn .18s ease; }
+  @keyframes zzuliFadeIn { from { opacity:0; transform:scale(.985);} to { opacity:1; transform:scale(1);} }
+  html.zzuli-ios-theme .zzuli-submit-header { display:flex; flex-wrap:wrap; gap:18px; align-items:center; margin-bottom:18px; }
+  html.zzuli-ios-theme .zzuli-submit-title { font-size:24px; font-weight:700; background:linear-gradient(92deg, var(--ios-accent), rgba(var(--ios-accent-rgb),0.55)); -webkit-background-clip:text; color:transparent; margin-right:auto; }
+  html.zzuli-ios-theme .zzuli-lang-segment { display:inline-flex; background:rgba(var(--ios-accent-rgb),0.12); border:1px solid rgba(var(--ios-accent-rgb),0.35); border-radius:20px; padding:4px; gap:4px; }
+  html.zzuli-ios-theme.zzuli-dark .zzuli-lang-segment { background:rgba(var(--ios-accent-rgb),0.25); }
+  html.zzuli-ios-theme .zzuli-lang-segment button { border:none; background:transparent; padding:6px 14px; font-size:13px; font-weight:500; border-radius:14px; cursor:pointer; color:var(--ios-accent); transition: background var(--ios-transition), color var(--ios-transition); }
+  html.zzuli-ios-theme .zzuli-lang-segment button.zzuli-active { background:var(--ios-accent); color:#fff; box-shadow:0 2px 6px -1px rgba(var(--ios-accent-rgb),0.55); }
+  html.zzuli-ios-theme .zzuli-submit-toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px; }
+  html.zzuli-ios-theme .zzuli-chip-small { font-size:12px; padding:4px 10px; border-radius:14px; background:rgba(var(--ios-accent-rgb),0.10); color:var(--ios-accent); font-weight:500; border:1px solid rgba(var(--ios-accent-rgb),0.25); }
+  html.zzuli-ios-theme.zzuli-dark .zzuli-chip-small { background:rgba(var(--ios-accent-rgb),0.22); }
+  html.zzuli-ios-theme .zzuli-submit-actions { margin-left:auto; display:flex; gap:10px; }
+  html.zzuli-ios-theme .zzuli-submit-fullscreen-btn { background:linear-gradient(to bottom right, rgba(var(--ios-accent-rgb),0.18), rgba(var(--ios-accent-rgb),0.05)); border:1px solid rgba(var(--ios-accent-rgb),0.4); color:var(--ios-accent); padding:6px 14px; font-size:12px; line-height:1; border-radius:18px; cursor:pointer; }
+  html.zzuli-ios-theme .zzuli-submit-fullscreen-btn:hover { background:rgba(var(--ios-accent-rgb),0.30); color:#fff; }
+  html.zzuli-ios-theme .zzuli-editor-container { position:relative; border-radius:18px; overflow:hidden; }
+  html.zzuli-ios-theme .zzuli-editor-container .CodeMirror, 
+  html.zzuli-ios-theme .zzuli-editor-container .ace_editor, 
+  html.zzuli-ios-theme .zzuli-editor-container textarea { min-height:380px; font-size:13.5px; }
+  html.zzuli-ios-theme .zzuli-code-overlay { position:absolute; right:10px; bottom:8px; font-size:11px; background:rgba(0,0,0,0.35); color:#fff; padding:4px 10px 5px; border-radius:14px; display:flex; gap:8px; align-items:center; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); pointer-events:none; }
+  html.zzuli-ios-theme.zzuli-dark .zzuli-code-overlay { background:rgba(255,255,255,0.15); }
+  html.zzuli-ios-theme .zzuli-auto-saved { font-size:11px; color:var(--zzuli-muted); margin-left:4px; min-height:14px; }
+  html.zzuli-ios-theme .zzuli-submit-footer { display:flex; justify-content:space-between; align-items:center; margin-top:18px; gap:12px; flex-wrap:wrap; }
+  html.zzuli-ios-theme .zzuli-submit-footer .btn-primary { font-weight:600; padding:8px 26px; }
+  html.zzuli-ios-theme .zzuli-warning-unsaved { color:#d35400; font-size:12px; font-weight:500; }
+  html.zzuli-ios-theme.zzuli-dark .zzuli-warning-unsaved { color:#ffb347; }
+  html.zzuli-ios-theme .zzuli-hidden { display:none !important; }
+  html.zzuli-ios-theme .zzuli-lang-select-original { display:none !important; }
+  @media (max-width: 768px){
+    html.zzuli-ios-theme .zzuli-submit-wrapper { padding:24px 20px 26px; border-radius:22px; }
+    html.zzuli-ios-theme .zzuli-submit-title { font-size:20px; }
+    html.zzuli-ios-theme .zzuli-submit-fullscreen-btn { padding:6px 12px; }
+    html.zzuli-ios-theme .zzuli-code-overlay { font-size:10px; right:6px; bottom:6px; }
+  }
+  /* ===== 提交代码页增强样式结束 ===== */
+
+  /* ===== 代码补全 / 导入提示 iOS 风格 ===== */
+  /* CodeMirror 5 show-hint */
+  html.zzuli-ios-theme .CodeMirror-hints { position:absolute; z-index:999999 !important; padding:6px 0; margin:4px 0 0; list-style:none; background:var(--zzuli-card); backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); border:1px solid var(--zzuli-separator); border-radius:16px; font-size:13px; box-shadow:0 8px 28px -6px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08); max-height:320px; overflow-y:auto; scrollbar-width:thin; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-hints { box-shadow:0 8px 28px -8px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.5); }
+  html.zzuli-ios-theme .CodeMirror-hint { padding:6px 14px 6px 14px; cursor:pointer; white-space:nowrap; color:var(--zzuli-text); display:flex; align-items:center; gap:10px; position:relative; font-family:var(--ios-font-stack); }
+  html.zzuli-ios-theme .CodeMirror-hint:hover { background:rgba(var(--ios-accent-rgb),0.10); }
+  html.zzuli-ios-theme .CodeMirror-hint-active { background:linear-gradient(92deg, var(--ios-accent), rgba(var(--ios-accent-rgb),0.7)); color:#fff; border-radius:10px; }
+  html.zzuli-ios-theme .CodeMirror-hint span.zzuli-hint-meta { margin-left:auto; font-size:11px; color:var(--zzuli-muted); font-weight:500; letter-spacing:.5px; }
+  html.zzuli-ios-theme .CodeMirror-hint-active span.zzuli-hint-meta { color:rgba(255,255,255,0.9); }
+
+  /* 右侧导入 / 来源 / 类型提示通用元信息容器（若存在） */
+  html.zzuli-ios-theme .CodeMirror-hint .zzuli-hint-meta { margin-left:auto; font-size:11px; color:var(--zzuli-muted); font-weight:500; letter-spacing:.5px; }
+
+  /* CodeMirror 6 自动补全 */
+  html.zzuli-ios-theme .cm-tooltip.cm-tooltip-autocomplete { border:1px solid var(--zzuli-separator); background:var(--zzuli-card); backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); border-radius:18px; padding:6px 0; box-shadow:0 8px 28px -6px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08); }
+  html.zzuli-ios-theme.zzuli-dark .cm-tooltip.cm-tooltip-autocomplete { box-shadow:0 8px 28px -8px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.5); }
+  html.zzuli-ios-theme .cm-tooltip-autocomplete ul { padding:0; margin:0; }
+  html.zzuli-ios-theme .cm-tooltip-autocomplete li { padding:6px 14px; font-size:13px; display:flex; align-items:center; gap:8px; }
+  html.zzuli-ios-theme .cm-tooltip-autocomplete li[aria-selected="true"] { background:linear-gradient(92deg, var(--ios-accent), rgba(var(--ios-accent-rgb),0.7)); color:#fff; }
+  html.zzuli-ios-theme .cm-completionDetail { margin-left:auto; font-size:11px; opacity:.75; }
+  html.zzuli-ios-theme .cm-completionMatchedText { font-weight:600; color:var(--ios-accent); }
+  html.zzuli-ios-theme.zzuli-dark .cm-tooltip-autocomplete li[aria-selected="true"] .cm-completionMatchedText { color:#fff; text-decoration:underline; }
+
+  /* Ace Editor 自动补全 */
+  html.zzuli-ios-theme .ace_autocomplete { background:var(--zzuli-card) !important; color:var(--zzuli-text) !important; border:1px solid var(--zzuli-separator) !important; border-radius:18px !important; box-shadow:0 8px 26px -6px rgba(0,0,0,0.18),0 2px 6px rgba(0,0,0,0.08) !important; padding:4px 0 6px !important; backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); }
+  html.zzuli-ios-theme.zzuli-dark .ace_autocomplete { box-shadow:0 8px 28px -8px rgba(0,0,0,0.6),0 2px 6px rgba(0,0,0,0.5) !important; }
+  html.zzuli-ios-theme .ace_autocomplete .ace_completion { padding:4px 14px 4px 14px !important; position:relative; }
+  html.zzuli-ios-theme .ace_autocomplete .ace_completion:hover { background:rgba(var(--ios-accent-rgb),0.10) !important; }
+  html.zzuli-ios-theme .ace_autocomplete .ace_selected { background:linear-gradient(92deg, var(--ios-accent), rgba(var(--ios-accent-rgb),0.75)) !important; color:#fff !important; border-radius:10px; }
+  html.zzuli-ios-theme .ace_autocomplete .ace_completion.ace_selected .ace_rightAlignedText { color:rgba(255,255,255,0.85) !important; }
+  html.zzuli-ios-theme .ace_autocomplete .ace_rightAlignedText { font-size:11px; color:var(--zzuli-muted) !important; font-weight:500; }
+  html.zzuli-ios-theme .ace_doc-tooltip { background:var(--zzuli-card) !important; border:1px solid var(--zzuli-separator) !important; color:var(--zzuli-text) !important; border-radius:16px !important; box-shadow:0 10px 30px -8px rgba(0,0,0,0.25),0 2px 6px rgba(0,0,0,0.08) !important; max-width:420px; line-height:1.5; padding:10px 14px !important; font-size:12.5px; }
+  html.zzuli-ios-theme.zzuli-dark .ace_doc-tooltip { box-shadow:0 10px 34px -10px rgba(0,0,0,0.65),0 2px 6px rgba(0,0,0,0.5) !important; }
+  html.zzuli-ios-theme .ace_doc-tooltip code, html.zzuli-ios-theme .ace_doc-tooltip pre { background:rgba(var(--ios-accent-rgb),0.10); padding:2px 6px; border-radius:8px; }
+
+  /* 滚动条微调 */
+  html.zzuli-ios-theme .CodeMirror-hints::-webkit-scrollbar, html.zzuli-ios-theme .ace_autocomplete::-webkit-scrollbar { width:8px; }
+  html.zzuli-ios-theme .CodeMirror-hints::-webkit-scrollbar-track, html.zzuli-ios-theme .ace_autocomplete::-webkit-scrollbar-track { background:transparent; }
+  html.zzuli-ios-theme .CodeMirror-hints::-webkit-scrollbar-thumb, html.zzuli-ios-theme .ace_autocomplete::-webkit-scrollbar-thumb { background:rgba(var(--ios-accent-rgb),0.35); border-radius:20px; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-hints::-webkit-scrollbar-thumb, html.zzuli-ios-theme.zzuli-dark .ace_autocomplete::-webkit-scrollbar-thumb { background:rgba(var(--ios-accent-rgb),0.55); }
+  /* ===== 补全弹窗结束 ===== */
   `;
 
     styleTag.textContent = baseCSS;
@@ -835,6 +914,106 @@
         }
     }
 
+    // 提交代码页增强
+    function enhanceSubmitPage(){
+        if(!document.documentElement.classList.contains('zzuli-ios-theme')) return;
+        if(!/submitpage\.php/i.test(location.href)) return;
+        if(document.body.dataset.zzuliSubmitEnhanced) return;
+        document.body.dataset.zzuliSubmitEnhanced = '1';
+
+        const form = document.querySelector('form textarea, form .CodeMirror, form .ace_editor')?.closest('form');
+        if(!form) return;
+
+        const params = new URLSearchParams(location.search);
+        const pid = params.get('id') || params.get('pid') || params.get('problem_id') || '未知';
+
+        const langSelect = form.querySelector('select'); // 保留原生下拉框
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'zzuli-submit-wrapper';
+        form.parentElement.insertBefore(wrapper, form);
+        wrapper.appendChild(form);
+
+        const header = document.createElement('div');
+        header.className = 'zzuli-submit-header';
+        const title = document.createElement('div');
+        title.className = 'zzuli-submit-title';
+        title.textContent = `提交代码 #${pid}`;
+        header.appendChild(title);
+        // 不再构建分段语言控件，保留原 select
+        wrapper.insertBefore(header, form);
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'zzuli-submit-toolbar';
+        const statsChip = document.createElement('div'); statsChip.className='zzuli-chip-small'; statsChip.textContent='长度: 0'; toolbar.appendChild(statsChip);
+        const autoSaved = document.createElement('div'); autoSaved.className='zzuli-auto-saved'; toolbar.appendChild(autoSaved);
+        wrapper.insertBefore(toolbar, form);
+
+        const submitBtn = form.querySelector('input[type=submit],button[type=submit],input[name=submit]');
+        const footer = document.createElement('div'); footer.className='zzuli-submit-footer';
+        const leftInfo = document.createElement('div'); leftInfo.className='zzuli-warning-unsaved zzuli-hidden'; leftInfo.textContent='有未保存的更改';
+        const rightActions = document.createElement('div'); rightActions.style.display='flex'; rightActions.style.gap='10px';
+        if(submitBtn){ submitBtn.classList.add('btn','btn-primary'); rightActions.appendChild(submitBtn); }
+        footer.appendChild(leftInfo); footer.appendChild(rightActions); form.appendChild(footer);
+
+        const codeNode = form.querySelector('.CodeMirror, .ace_editor, textarea');
+        if(codeNode){
+            const container = document.createElement('div'); container.className='zzuli-editor-container';
+            codeNode.parentElement.insertBefore(container, codeNode); container.appendChild(codeNode);
+            const overlay = document.createElement('div'); overlay.className='zzuli-code-overlay'; overlay.textContent=''; container.appendChild(overlay);
+            overlay.dataset.role='overlayStats';
+        }
+
+        const textarea = form.querySelector('textarea');
+
+        function getCode(){
+            const cmEl = form.querySelector('.CodeMirror'); if(cmEl && cmEl.CodeMirror) return cmEl.CodeMirror.getValue();
+            const aceEl = form.querySelector('.ace_editor'); if(window.ace && aceEl && aceEl.env && aceEl.env.editor) return aceEl.env.editor.getValue();
+            return textarea ? textarea.value : '';
+        }
+        function setCode(v){
+            const cmEl = form.querySelector('.CodeMirror'); if(cmEl && cmEl.CodeMirror){ cmEl.CodeMirror.setValue(v); return; }
+            const aceEl = form.querySelector('.ace_editor'); if(window.ace && aceEl && aceEl.env && aceEl.env.editor){ aceEl.env.editor.setValue(v,-1); return; }
+            if(textarea) textarea.value = v;
+        }
+        function draftKey(){ const langIdx = langSelect ? langSelect.selectedIndex : 0; return `zzuli_draft_${pid}_lang${langIdx}`; }
+        function loadDraftForLang(){ const saved = localStorage.getItem(draftKey()); if(saved!=null){ setCode(saved); lastSavedValue=saved; updateStats(); autoSaved.textContent='已载入草稿'; setTimeout(()=>{ if(autoSaved.textContent==='已载入草稿') autoSaved.textContent='';},1500);} else { updateStats(); } }
+
+        let lastSavedValue = getCode();
+        let debounceTimer = null;
+        function scheduleAutosave(){
+            if(debounceTimer) clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(()=>{ if(getCode()!==lastSavedValue) performAutosave(); },1500);
+        }
+        function performAutosave(){
+            const code = getCode(); localStorage.setItem(draftKey(), code); lastSavedValue=code; autoSaved.textContent='已自动保存';
+            setTimeout(()=>{ if(autoSaved.textContent==='已自动保存') autoSaved.textContent=''; },1800); updateStats();
+        }
+        function updateStats(){
+            const code = getCode(); const lines = code.length? code.split(/\n/).length : 0;
+            statsChip.textContent = `长度: ${code.length} | 行: ${lines}`;
+            leftInfo.classList.toggle('zzuli-hidden', code===lastSavedValue);
+            const overlay = form.querySelector('.zzuli-code-overlay'); if(overlay){
+              let lineInfo='';
+              const cmEl = form.querySelector('.CodeMirror');
+              if(cmEl && cmEl.CodeMirror){ const pos = cmEl.CodeMirror.getCursor(); lineInfo = `Ln ${pos.line+1}, Col ${pos.ch+1}`; }
+              else { const aceEl = form.querySelector('.ace_editor'); if(window.ace && aceEl && aceEl.env && aceEl.env.editor){ const pos = aceEl.env.editor.getCursorPosition(); lineInfo = `Ln ${pos.row+1}, Col ${pos.column+1}`; } }
+              overlay.textContent = `${lineInfo}${lineInfo? ' | ' : ''}Len ${code.length} Lns ${lines}`;
+            }
+        }
+
+        if(textarea) textarea.addEventListener('input', ()=>{ updateStats(); scheduleAutosave(); });
+        const cmEl = form.querySelector('.CodeMirror'); if(cmEl && cmEl.CodeMirror){ cmEl.CodeMirror.on('change', ()=>{ updateStats(); scheduleAutosave(); }); cmEl.CodeMirror.on('cursorActivity', updateStats); }
+        const aceEl = form.querySelector('.ace_editor'); if(window.ace && aceEl && aceEl.env && aceEl.env.editor){ aceEl.env.editor.on('change', ()=>{ updateStats(); scheduleAutosave(); }); aceEl.env.editor.selection.on('changeCursor', updateStats); }
+        if(langSelect){ langSelect.addEventListener('change', ()=>{ loadDraftForLang(); }); }
+
+        if(submitBtn){ submitBtn.addEventListener('click', ()=>{ const k=draftKey(); setTimeout(()=>localStorage.removeItem(k),200); lastSavedValue=getCode(); updateStats(); }); }
+        window.addEventListener('beforeunload', (e)=>{ if(getCode()!==lastSavedValue){ e.preventDefault(); e.returnValue=''; }});
+
+        loadDraftForLang();
+        updateStats();
+    }
+
     // 监听后续变化（若有异步加载）
     const observer = new MutationObserver(() => {
         if (!STATE.enabled) return;
@@ -849,7 +1028,36 @@
     initialAdjust();
     applyTheme();
     updatePanelText();
-    // 延迟执行题目增强，确保 DOM 已渲染
-    setTimeout(enhanceProblemPage, 0);
-})();
+    // 延迟执行题目增强与提交页增强
+    setTimeout(()=>{ enhanceProblemPage(); enhanceSubmitPage(); },0);
 
+    // ===== 补全提示后处理（拆分导入 / 来源 meta） =====
+    const hintObserver = new MutationObserver((muts)=>{
+        muts.forEach(m=>{
+            if(!(m.addedNodes||m.removedNodes)) return;
+            document.querySelectorAll('.CodeMirror-hints').forEach(ul=>{
+                ul.querySelectorAll('li.CodeMirror-hint').forEach(li=>{
+                    if(li.dataset.zzuliHintProcessed) return;
+                    const txt = li.textContent || '';
+                    // 匹配常见格式：identifier — source  / identifier - source / identifier · source / identifier (source)
+                    let match, namePart, metaPart;
+                    if((match = txt.match(/^(.+?)\s+[—\-·]\s+(.+?)$/))){
+                        namePart = match[1]; metaPart = match[2];
+                    } else if((match = txt.match(/^(.+?)\s+\(([^()]+)\)$/))){
+                        namePart = match[1]; metaPart = match[2];
+                    }
+                    if(namePart && metaPart){
+                        li.textContent = '';
+                        const spanLeft = document.createElement('span'); spanLeft.textContent = namePart.trim();
+                        const spanMeta = document.createElement('span'); spanMeta.textContent = metaPart.trim(); spanMeta.className='zzuli-hint-meta';
+                        li.appendChild(spanLeft); li.appendChild(spanMeta);
+                        li.dataset.zzuliHintProcessed = '1';
+                    } else {
+                        li.dataset.zzuliHintProcessed = '1';
+                    }
+                });
+            });
+        });
+    });
+    hintObserver.observe(document.body,{ childList:true, subtree:true });
+})();
