@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         ZZULIOJ iOS Style Modernizer
 // @namespace    https://acm.zzuli.edu.cn/
-// @version      0.1.3
+// @version      0.1.4
 // @description  将 ZZULIOJ 界面美化为类 iOS 扁平圆角半透明风格，支持暗黑模式与快速切换
 // @author       ShiYi
 // @match        *://acm.zzuli.edu.cn/*
 // @match        *://acm.zzuli.edu.cn/*?*
 // @run-at       document-end
 // @grant        none
+// @license      MIT
 // ==/UserScript==
 
 (function () {
@@ -337,6 +338,53 @@
   html.zzuli-ios-theme pre {
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
   }
+
+  /* 代码编辑器 (提交代码页) 行号栏与暗色优化 */
+  /* 通用容器与边框 */
+  html.zzuli-ios-theme .CodeMirror,
+  html.zzuli-ios-theme .ace_editor {
+    background: var(--zzuli-code-bg) !important;
+    border: 1px solid var(--zzuli-separator) !important;
+    border-radius: var(--ios-radius);
+  }
+  /* CodeMirror 行号与 gutter */
+  html.zzuli-ios-theme .CodeMirror-gutters,
+  html.zzuli-ios-theme .CodeMirror-gutter { /* 兼容不同版本 */
+    background: var(--zzuli-card) !important;
+    border-right: 1px solid var(--zzuli-separator) !important;
+  }
+  html.zzuli-ios-theme .CodeMirror-linenumber { color: var(--zzuli-muted) !important; }
+  html.zzuli-ios-theme .CodeMirror-activeline-background { background: rgba(var(--ios-accent-rgb),0.08) !important; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-activeline-background { background: rgba(var(--ios-accent-rgb),0.18) !important; }
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror,
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-gutters,
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-gutter,
+  html.zzuli-ios-theme.zzuli-dark .CodeMirror-linenumber { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
+
+  /* Ace Editor Gutter */
+  html.zzuli-ios-theme .ace_gutter, 
+  html.zzuli-ios-theme .ace_gutter-layer, 
+  html.zzuli-ios-theme .ace_gutter-active-line, 
+  html.zzuli-ios-theme .ace_gutter-cell { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
+  html.zzuli-ios-theme .ace_gutter-active-line { background: rgba(var(--ios-accent-rgb),0.10) !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter-active-line { background: rgba(var(--ios-accent-rgb),0.22) !important; }
+  html.zzuli-ios-theme .ace_marker-layer .ace_active-line { background: rgba(var(--ios-accent-rgb),0.08) !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_marker-layer .ace_active-line { background: rgba(var(--ios-accent-rgb),0.16) !important; }
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter, 
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter-layer, 
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter-cell { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
+
+  /* 通用/备用类名（可能的自定义行号容器） */
+  html.zzuli-ios-theme .line-numbers, 
+  html.zzuli-ios-theme .line-numbers-rows,
+  html.zzuli-ios-theme .linenums,
+  html.zzuli-ios-theme .gutter,
+  html.zzuli-ios-theme.zzuli-dark .line-numbers,
+  html.zzuli-ios-theme.zzuli-dark .line-numbers-rows,
+  html.zzuli-ios-theme.zzuli-dark .linenums,
+  html.zzuli-ios-theme.zzuli-dark .gutter { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
+  html.zzuli-ios-theme .line-numbers-rows > span:before { color: var(--zzuli-muted); }
+  html.zzuli-ios-theme.zzuli-dark .line-numbers-rows > span:before { color: var(--zzuli-muted); }
 
   /* 分割线 */
   html.zzuli-ios-theme hr {
