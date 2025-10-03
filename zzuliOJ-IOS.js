@@ -1014,6 +1014,114 @@
         updateStats();
     }
 
+    /* ================= 用户信息页提交/正确图表修复与 iOS 风格重绘 ================= */
+    function enhanceUserInfoChart(){
+        // 仅在包含 #submission (Flot 图) 的用户信息页执行
+        if(!/userinfo\.php/i.test(location.href)) return;
+        const container = document.getElementById('submission');
+        if(!container) return;
+        if(container.dataset.zzuliChartUpgraded) return;
+
+        // 尝试获取 Flot plot 对象（可能需要等待）
+        let attempts = 0;
+        const maxAttempts = 60; // ~30 秒 (500ms * 60)
+        const timer = setInterval(()=>{
+            attempts++;
+            const $ = window.jQuery;
+            if(!$){ if(attempts>=maxAttempts) clearInterval(timer); return; }
+            const plot = $(container).data('plot');
+            if(!plot){ if(attempts>=maxAttempts) clearInterval(timer); return; }
+            try {
+                clearInterval(timer);
+                // 原数据
+                const orig = plot.getData();
+                if(!orig || orig.length<2) return;
+                const submitSeries = orig[0].data || [];
+                const acSeries = orig[1].data || [];
+
+                function aggregate(series){
+                    const map = Object.create(null);
+                    for(let i=0;i<series.length;i++){
+                        const p = series[i];
+                        if(!p) continue;
+                        let t = p[0];
+                        const d = new Date(t); d.setHours(0,0,0,0); t = d.getTime();
+                        map[t] = (map[t]||0) + p[1];
+                    }
+                    return Object.keys(map).map(k=>[+k,map[k]]).sort((a,b)=>a[0]-b[0]);
+                }
+                const d1 = aggregate(submitSeries);
+                const d2 = aggregate(acSeries);
+                const totalSubmit = d1.reduce((s,p)=>s+p[1],0);
+                const totalAC = d2.reduce((s,p)=>s+p[1],0);
+                const acRate = totalSubmit? (totalAC/totalSubmit*100).toFixed(1) : '0.0';
+
+                // 移除原 legend
+                const oldLegend = container.querySelector('.legend');
+                if(oldLegend) oldLegend.remove();
+
+                // 自定义样式一次性注入
+                if(!document.getElementById('zzuli-userchart-ios-style')){
+                    const style = document.createElement('style');
+                    style.id='zzuli-userchart-ios-style';
+                    style.textContent = `#submission-wrapper-ios{position:relative;}\n#submission{border-radius:18px !important; background:var(--zzuli-code-bg,#fff); box-shadow:0 2px 8px rgba(0,0,0,0.06),0 4px 18px -6px rgba(0,0,0,0.12); padding:4px 4px 0 4px;}\nhtml.zzuli-dark #submission{background:linear-gradient(145deg,#1f1f1f,#242424);}\n#submission-ios-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;font-size:12px;font-family:var(--ios-font-stack,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',Arial,sans-serif);color:var(--zzuli-text,#222);}\n#submission-ios-legend .item{display:flex;align-items:center;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,0.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);gap:6px;line-height:1;font-weight:500;}\nhtml.zzuli-dark #submission-ios-legend .item{background:rgba(40,40,40,0.55);color:#e6e6e6;}\n#submission-ios-legend .dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,0.08);}\nhtml.zzuli-dark #submission-ios-legend .dot{box-shadow:0 0 0 1px rgba(255,255,255,0.10);}\n#submission-ios-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;font-size:12px;font-family:var(--ios-font-stack,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',Arial,sans-serif);}\n#submission-ios-stats .stat{padding:6px 12px;border-radius:14px;background:#111;color:#fff;font-weight:500;}\n#submission-ios-stats .rate{background:#007aff;}\nhtml.zzuli-dark #submission-ios-stats .stat{background:#333;}\nhtml.zzuli-dark #submission-ios-stats .rate{background:#0a84ff;}\n#submission-tooltip-ios{position:absolute;padding:6px 10px;background:rgba(0,0,0,0.75);color:#fff;font-size:12px;border-radius:10px;pointer-events:none;z-index:50;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;}\n`;
+                    document.head.appendChild(style);
+                }
+
+                // 包裹器
+                if(!container.parentElement.id || container.parentElement.id!=='submission-wrapper-ios'){
+                    const wrap = document.createElement('div');
+                    wrap.id='submission-wrapper-ios';
+                    container.parentElement.insertBefore(wrap, container);
+                    wrap.appendChild(container);
+                }
+
+                // 重新绘制
+                $.plot($(container), [
+                    {label:'提交', data:d1, lines:{show:true,lineWidth:2}, color:'#ff9500', shadowSize:0},
+                    {label:'正确', data:d2, bars:{show:true, barWidth:24*3600*1000*0.55, align:'center', fill:0.75, lineWidth:1}, color:'#34c759', shadowSize:0}
+                ], {
+                    legend:{show:false},
+                    xaxis:{mode:'time', tickLength:0},
+                    yaxis:{min:0, tickDecimals:0},
+                    grid:{hoverable:true, clickable:true, borderWidth:0, color:(document.documentElement.classList.contains('zzuli-dark')?'#aaa':'#666'), backgroundColor:{colors:(document.documentElement.classList.contains('zzuli-dark')?['#1f1f1f','#242424']:['#ffffff','#f6f8fa'])}}
+                });
+
+                // 自定义 Legend + 统计
+                const wrap = container.parentElement;
+                // 清理旧
+                wrap.querySelector('#submission-ios-legend')?.remove();
+                wrap.querySelector('#submission-ios-stats')?.remove();
+                const legend = document.createElement('div'); legend.id='submission-ios-legend';
+                legend.innerHTML = `\n <div class="item"><span class="dot" style="background:#ff9500"></span>提交 <strong>${totalSubmit}</strong></div>\n <div class="item"><span class="dot" style="background:#34c759"></span>正确 <strong>${totalAC}</strong></div>`;
+                const statsBar = document.createElement('div'); statsBar.id='submission-ios-stats';
+                statsBar.innerHTML = `\n <div class="stat">合计 ${totalSubmit} 次</div>\n <div class="stat">通过 ${totalAC} 次</div>\n <div class="stat rate">通过率 ${acRate}%</div>`;
+                wrap.appendChild(legend);
+                wrap.appendChild(statsBar);
+
+                // Tooltip
+                let tooltip = document.getElementById('submission-tooltip-ios');
+                if(!tooltip){ tooltip = document.createElement('div'); tooltip.id='submission-tooltip-ios'; container.parentElement.appendChild(tooltip); }
+                $(container).off('plothover.zzuli').on('plothover.zzuli', function (e,pos,item){
+                    if(item){
+                        const date = new Date(item.datapoint[0]);
+                        const dStr = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+                        tooltip.innerHTML = `<strong>${item.series.label}</strong><br>${dStr}: ${item.datapoint[1]}`;
+                        const rect = container.getBoundingClientRect();
+                        tooltip.style.left = (pos.pageX - rect.left + 12) + 'px';
+                        tooltip.style.top = (pos.pageY - rect.top - 38) + 'px';
+                        tooltip.style.display = 'block';
+                    } else {
+                        tooltip.style.display = 'none';
+                    }
+                });
+
+                container.dataset.zzuliChartUpgraded = '1';
+            } catch(err){ console.warn('[zzuli-ios] 图表增强失败', err); }
+        }, 500);
+    }
+    /* ================= 图表修复结束 ================= */
+
     // 监听后续变化（若有异步加载）
     const observer = new MutationObserver(() => {
         if (!STATE.enabled) return;
@@ -1028,8 +1136,8 @@
     initialAdjust();
     applyTheme();
     updatePanelText();
-    // 延迟执行题目增强与提交页增强
-    setTimeout(()=>{ enhanceProblemPage(); enhanceSubmitPage(); },0);
+    // 延迟执行题目增强与提交页增强与用户统计图增强
+    setTimeout(()=>{ enhanceProblemPage(); enhanceSubmitPage(); enhanceUserInfoChart(); },0);
 
     // ===== 补全提示后处理（拆分导入 / 来源 meta） =====
     const hintObserver = new MutationObserver((muts)=>{
