@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ZZULIOJ iOS Style Modernizer
 // @namespace    https://acm.zzuli.edu.cn/
-// @version      0.1.7
+// @version      0.1.8
 // @description  将 ZZULIOJ 界面美化为类 iOS 扁平圆角半透明风格，支持暗黑模式与快速切换
 // @author       ShiYi
 // @match        *://acm.zzuli.edu.cn/*
@@ -362,20 +362,20 @@
   html.zzuli-ios-theme.zzuli-dark .CodeMirror-linenumber { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
 
   /* Ace Editor Gutter */
-  html.zzuli-ios-theme .ace_gutter, 
-  html.zzuli-ios-theme .ace_gutter-layer, 
-  html.zzuli-ios-theme .ace_gutter-active-line, 
+  html.zzuli-ios-theme .ace_gutter,
+  html.zzuli-ios-theme .ace_gutter-layer,
+  html.zzuli-ios-theme .ace_gutter-active-line,
   html.zzuli-ios-theme .ace_gutter-cell { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
   html.zzuli-ios-theme .ace_gutter-active-line { background: rgba(var(--ios-accent-rgb),0.10) !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_gutter-active-line { background: rgba(var(--ios-accent-rgb),0.22) !important; }
   html.zzuli-ios-theme .ace_marker-layer .ace_active-line { background: rgba(var(--ios-accent-rgb),0.08) !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_marker-layer .ace_active-line { background: rgba(var(--ios-accent-rgb),0.16) !important; }
-  html.zzuli-ios-theme.zzuli-dark .ace_gutter, 
-  html.zzuli-ios-theme.zzuli-dark .ace_gutter-layer, 
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter,
+  html.zzuli-ios-theme.zzuli-dark .ace_gutter-layer,
   html.zzuli-ios-theme.zzuli-dark .ace_gutter-cell { background: var(--zzuli-card) !important; color: var(--zzuli-muted) !important; }
 
   /* 通用/备用类名（可能的自定义行号容器） */
-  html.zzuli-ios-theme .line-numbers, 
+  html.zzuli-ios-theme .line-numbers,
   html.zzuli-ios-theme .line-numbers-rows,
   html.zzuli-ios-theme .linenums,
   html.zzuli-ios-theme .gutter,
@@ -421,23 +421,23 @@
   html.zzuli-ios-theme.zzuli-dark .ace_marker-layer .ace_selection { background: rgba(var(--ios-accent-rgb),0.38) !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_marker-layer .ace_active-line { background: rgba(255,255,255,0.06) !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_gutter { color: #6b7480 !important; }
-  html.zzuli-ios-theme.zzuli-dark .ace_keyword, 
+  html.zzuli-ios-theme.zzuli-dark .ace_keyword,
   html.zzuli-ios-theme.zzuli-dark .ace_storage { color: #82AAFF !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_operator { color: #89DDFF !important; }
-  html.zzuli-ios-theme.zzuli-dark .ace_identifier, 
+  html.zzuli-ios-theme.zzuli-dark .ace_identifier,
   html.zzuli-ios-theme.zzuli-dark .ace_variable { color: #ECEFF4 !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_variable.ace_parameter { color: #C5E4FF !important; }
-  html.zzuli-ios-theme.zzuli-dark .ace_support.ace_function, 
+  html.zzuli-ios-theme.zzuli-dark .ace_support.ace_function,
   html.zzuli-ios-theme.zzuli-dark .ace_entity.ace_name.ace_function { color: #B3E5FC !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_string { color: #C3E88D !important; }
-  html.zzuli-ios-theme.zzuli-dark .ace_numeric, 
+  html.zzuli-ios-theme.zzuli-dark .ace_numeric,
   html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_numeric { color: #F78C6C !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_comment { color: #6b7480 !important; font-style: italic; }
-  html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_language, 
+  html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_language,
   html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_character { color: #FFCB6B !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_constant.ace_other { color: #FF9CAC !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_invalid { background: #B00020 !important; color: #fff !important; }
-  html.zzuli-ios-theme.zzuli-dark .ace_markup.ace_heading, 
+  html.zzuli-ios-theme.zzuli-dark .ace_markup.ace_heading,
   html.zzuli-ios-theme.zzuli-dark .ace_entity.ace_other.ace_attribute-name { color: #F6C177 !important; }
   html.zzuli-ios-theme.zzuli-dark .ace_entity.ace_name.ace_tag { color: #7FDBCA !important; }
 
@@ -539,7 +539,7 @@
   html.zzuli-ios-theme.zzuli-dark .panel-footer a { color: var(--ios-accent) !important; }
 
   /* 题目详情页 center 容器可能残留白色 */
-  html.zzuli-ios-theme.zzuli-dark center, 
+  html.zzuli-ios-theme.zzuli-dark center,
   html.zzuli-ios-theme.zzuli-dark center > div { background: transparent !important; }
 
   /* 自定义 evenrow / oddrow 条纹在暗色模式下统一风格 */
@@ -655,8 +655,8 @@
   html.zzuli-ios-theme .zzuli-submit-fullscreen-btn { background:linear-gradient(to bottom right, rgba(var(--ios-accent-rgb),0.18), rgba(var(--ios-accent-rgb),0.05)); border:1px solid rgba(var(--ios-accent-rgb),0.4); color:var(--ios-accent); padding:6px 14px; font-size:12px; line-height:1; border-radius:18px; cursor:pointer; }
   html.zzuli-ios-theme .zzuli-submit-fullscreen-btn:hover { background:rgba(var(--ios-accent-rgb),0.30); color:#fff; }
   html.zzuli-ios-theme .zzuli-editor-container { position:relative; border-radius:18px; overflow:hidden; }
-  html.zzuli-ios-theme .zzuli-editor-container .CodeMirror, 
-  html.zzuli-ios-theme .zzuli-editor-container .ace_editor, 
+  html.zzuli-ios-theme .zzuli-editor-container .CodeMirror,
+  html.zzuli-ios-theme .zzuli-editor-container .ace_editor,
   html.zzuli-ios-theme .zzuli-editor-container textarea { min-height:380px; font-size:13.5px; }
   html.zzuli-ios-theme .zzuli-code-overlay { position:absolute; right:10px; bottom:8px; font-size:11px; background:rgba(0,0,0,0.35); color:#fff; padding:4px 10px 5px; border-radius:14px; display:flex; gap:8px; align-items:center; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); pointer-events:none; }
   html.zzuli-ios-theme.zzuli-dark .zzuli-code-overlay { background:rgba(255,255,255,0.15); }
@@ -716,6 +716,76 @@
   html.zzuli-ios-theme .CodeMirror-hints::-webkit-scrollbar-thumb, html.zzuli-ios-theme .ace_autocomplete::-webkit-scrollbar-thumb { background:rgba(var(--ios-accent-rgb),0.35); border-radius:20px; }
   html.zzuli-ios-theme.zzuli-dark .CodeMirror-hints::-webkit-scrollbar-thumb, html.zzuli-ios-theme.zzuli-dark .ace_autocomplete::-webkit-scrollbar-thumb { background:rgba(var(--ios-accent-rgb),0.55); }
   /* ===== 补全弹窗结束 ===== */
+
+  /* ===== 统计页/题目页 legacy Pie 饼图（PieDiv）原样式重绘（严格参考原版） ===== */
+  html.zzuli-ios-theme .zzuli-pie-root { position: relative !important; height: auto !important; width: auto !important; }
+  html.zzuli-ios-theme .zzuli-pie-card { display: flex; align-items: center; gap: 10px; padding: 4px; border-radius: 14px; background: var(--zzuli-card); border: 1px solid var(--zzuli-separator); box-shadow: var(--zzuli-shadow); }
+  html.zzuli-ios-theme .zzuli-pie-figure { width: 200px; height: 200px; flex: 0 0 auto; display: grid; place-items: center; position: relative; }
+  html.zzuli-ios-theme .zzuli-pie-legend { display: grid; grid-auto-rows: minmax(0,auto); gap: 6px; font-size: 12px; color: var(--zzuli-text); }
+  html.zzuli-ios-theme .zzuli-pie-legend .item { display: flex; align-items: center; gap: 8px; background: rgba(var(--ios-accent-rgb),0.06); border: 1px solid var(--zzuli-separator); padding: 6px 10px; border-radius: 12px; transition: all var(--ios-transition); }
+  html.zzuli-ios-theme .zzuli-pie-legend .item:hover { background: rgba(var(--ios-accent-rgb),0.12); transform: translateX(2px); }
+  html.zzuli-ios-theme.zzuli-dark .zzuli-pie-legend .item { background: rgba(255,255,255,0.06); }
+  html.zzuli-ios-theme .zzuli-pie-legend .dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 1px var(--zzuli-separator) inset, 0 2px 4px rgba(0,0,0,0.1); }
+  html.zzuli-ios-theme .zzuli-pie-legend .label { font-weight: 600; }
+  html.zzuli-ios-theme .zzuli-pie-legend .val { margin-left: 4px; color: var(--zzuli-muted); }
+  html.zzuli-ios-theme .zzuli-pie-center { position: absolute; text-align: center; font-size: 12px; color: var(--zzuli-text); }
+  
+  /* iOS 风格饼图扇形标签 */
+  html.zzuli-ios-theme .zzuli-pie-label { 
+    position: absolute; 
+    font-size: 11px; 
+    font-weight: 600; 
+    color: #fff; 
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 8px rgba(0,0,0,0.3);
+    pointer-events: none; 
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.15);
+    white-space: nowrap;
+    opacity: 0;
+    animation: zzuliPieLabelFadeIn 0.4s ease forwards;
+  }
+  
+  @keyframes zzuliPieLabelFadeIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+  
+  /* 饼图扇形动画 */
+  html.zzuli-ios-theme .zzuli-pie-segment {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+  
+  html.zzuli-ios-theme .zzuli-pie-segment:hover {
+    filter: brightness(1.15) drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    transform: scale(1.05);
+  }
+  
+  /* 紧凑模式：用于窄单元格，隐藏图例，缩小圆环 */
+  html.zzuli-ios-theme .zzuli-pie-card.compact { padding: 2px; }
+  html.zzuli-ios-theme .zzuli-pie-card.compact .zzuli-pie-figure { width: 140px; height: 140px; }
+  html.zzuli-ios-theme .zzuli-pie-card.compact .zzuli-pie-legend { display: none; }
+   @media (max-width: 640px){
+     html.zzuli-ios-theme .zzuli-pie-card { flex-direction: column; align-items: stretch; }
+     html.zzuli-ios-theme .zzuli-pie-figure { margin: 0 auto; }
+   }
+   /* ===== 统计页/题目页 legacy Pie 饼图重绘结束 ===== */
+
+  /* —— 原版 PieDiv 简洁布局（匹配原始 pie.js 的呈现） —— */
+  html.zzuli-ios-theme .zzuli-pie-wrap { display: inline-flex; align-items: center; gap: 8px; }
+  html.zzuli-ios-theme .zzuli-pie-wrap.compact .zzuli-pie-legend { display:none; }
+  html.zzuli-ios-theme .zzuli-pie-figure { width: 200px; height: 200px; display: grid; place-items: center; position: relative; }
+  html.zzuli-ios-theme .zzuli-pie-figure.compact { width: 140px; height: 140px; }
+  html.zzuli-ios-theme .zzuli-pie-legend { display: grid; gap: 6px; font-size: 12px; color: var(--zzuli-text); }
+  html.zzuli-ios-theme .zzuli-pie-legend .item { display: inline-flex; align-items: center; gap: 6px; }
+  html.zzuli-ios-theme .zzuli-pie-legend .dot { width: 10px; height: 10px; border-radius: 0; }
+  html.zzuli-ios-theme .zzuli-pie-legend .text { white-space: nowrap; }
+
   `;
 
     styleTag.textContent = baseCSS;
@@ -994,11 +1064,11 @@
             statsChip.textContent = `长度: ${code.length} | 行: ${lines}`;
             leftInfo.classList.toggle('zzuli-hidden', code===lastSavedValue);
             const overlay = form.querySelector('.zzuli-code-overlay'); if(overlay){
-              let lineInfo='';
-              const cmEl = form.querySelector('.CodeMirror');
-              if(cmEl && cmEl.CodeMirror){ const pos = cmEl.CodeMirror.getCursor(); lineInfo = `Ln ${pos.line+1}, Col ${pos.ch+1}`; }
-              else { const aceEl = form.querySelector('.ace_editor'); if(window.ace && aceEl && aceEl.env && aceEl.env.editor){ const pos = aceEl.env.editor.getCursorPosition(); lineInfo = `Ln ${pos.row+1}, Col ${pos.column+1}`; } }
-              overlay.textContent = `${lineInfo}${lineInfo? ' | ' : ''}Len ${code.length} Lns ${lines}`;
+                let lineInfo='';
+                const cmEl = form.querySelector('.CodeMirror');
+                if(cmEl && cmEl.CodeMirror){ const pos = cmEl.CodeMirror.getCursor(); lineInfo = `Ln ${pos.line+1}, Col ${pos.ch+1}`; }
+                else { const aceEl = form.querySelector('.ace_editor'); if(window.ace && aceEl && aceEl.env && aceEl.env.editor){ const pos = aceEl.env.editor.getCursorPosition(); lineInfo = `Ln ${pos.row+1}, Col ${pos.column+1}`; } }
+                overlay.textContent = `${lineInfo}${lineInfo? ' | ' : ''}Len ${code.length} Lns ${lines}`;
             }
         }
 
@@ -1137,7 +1207,7 @@
     applyTheme();
     updatePanelText();
     // 延迟执行题目增强与提交页增强与用户统计图增强
-    setTimeout(()=>{ enhanceProblemPage(); enhanceSubmitPage(); enhanceUserInfoChart(); },0);
+    setTimeout(()=>{ enhanceProblemPage(); enhanceSubmitPage(); enhanceUserInfoChart(); enhanceLegacyPieCharts(); },0);
 
     // ===== 补全提示后处理（拆分导入 / 来源 meta） =====
     const hintObserver = new MutationObserver((muts)=>{
@@ -1168,4 +1238,238 @@
         });
     });
     hintObserver.observe(document.body,{ childList:true, subtree:true });
+
+    // 解析并重绘旧版 Pie 图
+    function enhanceLegacyPieCharts(){
+        const pieDivs = Array.from(document.querySelectorAll('#PieDiv'));
+        if(!pieDivs.length) return;
+        pieDivs.forEach(pieDiv => {
+            const hostRow = pieDiv.closest('tr#pie') || pieDiv.closest('tr');
+            if(!hostRow || pieDiv.dataset.zzuliPieUpgraded) return;
+
+            const table = hostRow.closest('table');
+            if(!table) return;
+            const rows = Array.from(table.rows);
+            const pieIndex = rows.indexOf(hostRow);
+            if(pieIndex < 0) return;
+
+            // 允许的判题项（中英文/简称）
+            const VERDICT_ALLOW = [
+                /^(正确|AC|Accepted)$/i,
+                /^(答案错误|WA|Wrong\s*Answer)$/i,
+                /^(编译错误|CE|Compile(ation)?\s*Error)$/i,
+                /^(运行错误|RE|Runtime\s*Error)$/i,
+                /^(时间超限|TLE|Time\s*Limit\s*Exceeded)$/i,
+                /^(内存超限|MLE|Memory\s*Limit\s*Exceeded)$/i,
+                /^(输出超限|OLE|Output\s*Limit\s*Exceeded)$/i,
+                /^(格式错误|PE|Presentation\s*Error)$/i
+            ];
+            const EXCLUDE_KEYWORDS = /(名次|排名|比例|通过率|提交|解决|用户|统计|statistics)/i;
+
+            const items = [];
+            for(let i=0;i<pieIndex;i++){
+                const tr = rows[i];
+                const tds = tr?.cells || [];
+                if(tds.length < 2) continue;
+                // 跳过表头行（含 th）
+                if(tr.querySelector('th')) continue;
+                const nameRaw = (tds[0].innerText || tds[0].textContent || '').trim();
+                if(!nameRaw) continue;
+                if(EXCLUDE_KEYWORDS.test(nameRaw)) continue;
+                const allowed = VERDICT_ALLOW.some(rx=> rx.test(nameRaw));
+                if(!allowed) continue;
+                const valText = (tds[1].innerText || tds[1].textContent || '').replace(/[^0-9]/g,'');
+                if(!valText) continue;
+                const val = parseInt(valText,10);
+                if(!(val >= 0)) continue;
+                items.push({ name: nameRaw, value: val });
+            }
+            if(!items.length) return;
+
+            const total = items.reduce((s,it)=>s+it.value,0);
+            if(total <= 0){ pieDiv.dataset.zzuliPieUpgraded = '1'; return; }
+
+            // 使用原站色板（索引顺序）以确保认知稳定，添加渐变效果
+            const colors = [];
+            colors[0] = '#FF8080';
+            colors[1] = '#8080FF';
+            colors[2] = '#80bb80';
+            colors[3] = '#FF0066';
+            colors[4] = '#9900FF';
+            colors[5] = '#996633';
+            colors[6] = '#006633';
+            colors[7] = '#000000';
+            colors[8] = '#CCFFFF';
+            colors[9] = '#0066FF';
+            colors[10] = '#066600';
+            colors[11] = '#666666';
+
+            // 清空并构建容器（iOS 风格）
+            pieDiv.classList.add('zzuli-pie-root');
+            pieDiv.innerHTML = '';
+            const wrap = document.createElement('div');
+            wrap.className = 'zzuli-pie-wrap';
+            const fig = document.createElement('div');
+            fig.className = 'zzuli-pie-figure';
+            const legend = document.createElement('div');
+            legend.className = 'zzuli-pie-legend';
+            wrap.appendChild(fig);
+            wrap.appendChild(legend);
+            pieDiv.appendChild(wrap);
+
+            // 自动紧凑：窄单元格隐藏图例
+            const cell = pieDiv.closest('td') || pieDiv;
+            const w = Math.round((cell.getBoundingClientRect?.().width) || cell.clientWidth || 0);
+            const isCompact = w && w <= 150;
+            if(isCompact){
+                wrap.classList.add('compact');
+                fig.classList.add('compact');
+            }
+
+            // iOS 风格圆环 - 使用SVG path绘制扇形而不是圆环
+            const size = isCompact ? 140 : 200;
+            const cx = size / 2;
+            const cy = size / 2;
+            const radius = size * 0.35; // 外半径
+            const innerRadius = size * 0.20; // 内半径（圆环）
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+            svg.setAttribute('width', String(size));
+            svg.setAttribute('height', String(size));
+            svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+            svg.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))';
+
+            // 添加渐变定义
+            const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+            items.forEach((it, idx) => {
+                const gradId = `zzuli-pie-grad-${idx}-${Math.random().toString(36).substr(2,9)}`;
+                const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+                grad.setAttribute('id', gradId);
+                grad.setAttribute('x1', '0%'); grad.setAttribute('y1', '0%');
+                grad.setAttribute('x2', '100%'); grad.setAttribute('y2', '100%');
+
+                const baseColor = colors[idx] || '#999';
+                const stop1 = document.createElementNS('http://www.w3.org/2000/svg','stop');
+                stop1.setAttribute('offset', '0%');
+                stop1.setAttribute('stop-color', baseColor);
+                stop1.setAttribute('stop-opacity', '1');
+
+                const stop2 = document.createElementNS('http://www.w3.org/2000/svg','stop');
+                stop2.setAttribute('offset', '100%');
+                stop2.setAttribute('stop-color', baseColor);
+                stop2.setAttribute('stop-opacity', '0.7');
+
+                grad.appendChild(stop1);
+                grad.appendChild(stop2);
+                defs.appendChild(grad);
+                it.gradId = gradId;
+            });
+            svg.appendChild(defs);
+
+            const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+            g.setAttribute('transform', `translate(${cx},${cy})`);
+            svg.appendChild(g);
+
+            // 绘制扇形（带动画）
+            let startAngle = -Math.PI / 2; // 从12点方向开始
+
+            items.forEach((it, idx) => {
+                const ratio = it.value / total;
+                const angle = ratio * 2 * Math.PI;
+                const endAngle = startAngle + angle;
+
+                // 计算路径
+                const x1 = Math.cos(startAngle) * radius;
+                const y1 = Math.sin(startAngle) * radius;
+                const x2 = Math.cos(endAngle) * radius;
+                const y2 = Math.sin(endAngle) * radius;
+                const x3 = Math.cos(endAngle) * innerRadius;
+                const y3 = Math.sin(endAngle) * innerRadius;
+                const x4 = Math.cos(startAngle) * innerRadius;
+                const y4 = Math.sin(startAngle) * innerRadius;
+
+                const largeArc = angle > Math.PI ? 1 : 0;
+
+                // 创建扇形路径
+                const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+                const d = [
+                    `M ${x1} ${y1}`,
+                    `A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}`,
+                    `L ${x3} ${y3}`,
+                    `A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${x4} ${y4}`,
+                    'Z'
+                ].join(' ');
+
+                path.setAttribute('d', d);
+                path.setAttribute('fill', `url(#${it.gradId})`);
+                path.setAttribute('stroke', 'rgba(255,255,255,0.3)');
+                path.setAttribute('stroke-width', '1');
+                path.classList.add('zzuli-pie-segment');
+
+                // iOS 动画效果 - 逐个展开
+                path.style.opacity = '0';
+                path.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    path.style.transition = `all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`;
+                    path.style.opacity = '1';
+                    path.style.transform = 'scale(1)';
+                }, 50);
+
+                g.appendChild(path);
+
+                // 计算标签位置（在扇形的中心）
+                const midAngle = startAngle + angle / 2;
+                const labelRadius = (radius + innerRadius) / 2;
+                const labelX = Math.cos(midAngle) * labelRadius;
+                const labelY = Math.sin(midAngle) * labelRadius;
+
+                // 只在扇形足够大时显示标签
+                const pct = Math.round(ratio * 100);
+                if(pct >= 5 && !isCompact) {
+                    const label = document.createElement('div');
+                    label.className = 'zzuli-pie-label';
+                    label.textContent = `${it.name}\n${pct}%`;
+                    label.style.left = `${cx + labelX}px`;
+                    label.style.top = `${cy + labelY}px`;
+                    label.style.animationDelay = `${idx * 0.1 + 0.3}s`;
+                    fig.appendChild(label);
+                }
+
+                startAngle = endAngle;
+            });
+
+            fig.appendChild(svg);
+
+            // Legend（图例）
+            if(!isCompact) {
+                items.forEach((it, idx) => {
+                    const pct = Math.round(100 * it.value / total);
+                    const row = document.createElement('div');
+                    row.className = 'item';
+                    row.style.opacity = '0';
+                    row.style.transform = 'translateX(-10px)';
+                    setTimeout(() => {
+                        row.style.transition = `all 0.4s ease ${idx * 0.08 + 0.2}s`;
+                        row.style.opacity = '1';
+                        row.style.transform = 'translateX(0)';
+                    }, 50);
+
+                    const dot = document.createElement('span');
+                    dot.className = 'dot';
+                    dot.style.background = colors[idx] || '#999';
+
+                    const text = document.createElement('span');
+                    text.className = 'text';
+                    text.textContent = `${it.name} ${pct}%`;
+
+                    row.appendChild(dot);
+                    row.appendChild(text);
+                    legend.appendChild(row);
+                });
+            }
+
+            pieDiv.dataset.zzuliPieUpgraded = '1';
+        });
+    }
+
 })();
