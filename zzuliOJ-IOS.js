@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ZZULIOJ iOS Style Modernizer
 // @namespace    https://acm.zzuli.edu.cn/
-// @version      0.1.8
+// @version      0.1.9
 // @description  将 ZZULIOJ 界面美化为类 iOS 扁平圆角半透明风格，支持暗黑模式与快速切换
 // @author       ShiYi
 // @match        *://acm.zzuli.edu.cn/*
@@ -588,53 +588,304 @@
     border: 1px solid var(--zzuli-separator);
     box-shadow: var(--zzuli-shadow);
     border-radius: 26px;
-    padding: 28px 32px 22px 32px;
+    padding: 32px 36px 28px 36px;
     margin-bottom: 26px;
     position: relative;
     overflow: hidden;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    animation: zzuliProblemHeaderFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  
+  @keyframes zzuliProblemHeaderFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
   html.zzuli-ios-theme .zzuli-problem-header::before {
     content: '';
-    position: absolute; inset:0;
-    background: radial-gradient(circle at 85% 15%, rgba(var(--ios-accent-rgb),0.18), transparent 55%);
+    position: absolute; 
+    inset:0;
+    background: radial-gradient(circle at 85% 15%, rgba(var(--ios-accent-rgb),0.20), transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(var(--ios-accent-rgb),0.12), transparent 50%);
     pointer-events:none;
+    animation: zzuliGradientPulse 8s ease-in-out infinite;
   }
+  
+  @keyframes zzuliGradientPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
   html.zzuli-ios-theme.zzuli-dark .zzuli-problem-header::before {
-    background: radial-gradient(circle at 78% 18%, rgba(var(--ios-accent-rgb),0.28), transparent 60%);
+    background: radial-gradient(circle at 82% 18%, rgba(var(--ios-accent-rgb),0.32), transparent 65%),
+                radial-gradient(circle at 15% 85%, rgba(var(--ios-accent-rgb),0.18), transparent 55%);
   }
+  
   html.zzuli-ios-theme .zzuli-problem-title {
-    font-size: 28px; font-weight: 700; margin:0 0 14px 0; letter-spacing: .5px;
-    background: linear-gradient(92deg, var(--ios-accent), rgba(var(--ios-accent-rgb),0.55));
-    -webkit-background-clip: text; color: transparent;
+    font-size: 32px; 
+    font-weight: 800; 
+    margin:0 0 18px 0; 
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    background: linear-gradient(95deg, var(--ios-accent) 0%, rgba(var(--ios-accent-rgb),0.65) 100%);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    animation: zzuliTitleSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  html.zzuli-ios-theme .zzuli-problem-meta { display:flex; flex-wrap:wrap; gap:10px 14px; margin-bottom:4px; }
-  html.zzuli-ios-theme .zzuli-chip-badge { font-size:12px; padding:4px 10px 5px; line-height:1.2; border-radius: 18px; background: rgba(var(--ios-accent-rgb),0.12); color: var(--ios-accent); font-weight:500; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border:1px solid rgba(var(--ios-accent-rgb),0.35); }
-  html.zzuli-ios-theme.zzuli-dark .zzuli-chip-badge { background: rgba(var(--ios-accent-rgb),0.22); }
-  html.zzuli-ios-theme .zzuli-chip-badge[data-kind="limit"] { background: rgba(var(--ios-accent-rgb),0.08); }
-  html.zzuli-ios-theme.zzuli-dark .zzuli-chip-badge[data-kind="limit"] { background: rgba(var(--ios-accent-rgb),0.30); }
-  html.zzuli-ios-theme .zzuli-problem-actions-bar { display:flex; gap:14px; margin-top:12px; }
-  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn { cursor:pointer; border:none; border-radius: 22px; padding:10px 20px; font-size:14px; font-weight:600; background: var(--ios-accent); color:#fff !important; box-shadow: 0 4px 14px -4px rgba(var(--ios-accent-rgb),0.55); transition: transform var(--ios-transition), box-shadow var(--ios-transition), background var(--ios-transition); text-decoration:none !important; display:inline-flex; align-items:center; gap:6px; }
-  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn:hover { transform: translateY(-2px); box-shadow:0 6px 18px -6px rgba(var(--ios-accent-rgb),0.65); }
-  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn.secondary { background: linear-gradient(to bottom right, rgba(var(--ios-accent-rgb),0.20), rgba(var(--ios-accent-rgb),0.08)); color: var(--ios-accent) !important; box-shadow:none; border:1px solid rgba(var(--ios-accent-rgb),0.35); }
-  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn.secondary:hover { background: rgba(var(--ios-accent-rgb),0.30); }
+  
+  @keyframes zzuliTitleSlideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-meta { 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:10px 14px; 
+    margin-bottom:8px;
+    animation: zzuliMetaFadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes zzuliMetaFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  html.zzuli-ios-theme .zzuli-chip-badge { 
+    font-size:12.5px; 
+    padding:6px 12px 7px; 
+    line-height:1.2; 
+    border-radius: 20px; 
+    background: rgba(var(--ios-accent-rgb),0.12); 
+    color: var(--ios-accent); 
+    font-weight:600; 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    border:1px solid rgba(var(--ios-accent-rgb),0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px -2px rgba(var(--ios-accent-rgb), 0.25);
+  }
+  
+  html.zzuli-ios-theme .zzuli-chip-badge:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px -2px rgba(var(--ios-accent-rgb), 0.4);
+    background: rgba(var(--ios-accent-rgb),0.18);
+  }
+  
+  html.zzuli-ios-theme.zzuli-dark .zzuli-chip-badge { 
+    background: rgba(var(--ios-accent-rgb),0.25); 
+    box-shadow: 0 2px 8px -2px rgba(var(--ios-accent-rgb), 0.35);
+  }
+  
+  html.zzuli-ios-theme .zzuli_chip[data-kind="limit"] { 
+    background: linear-gradient(135deg, rgba(var(--ios-accent-rgb),0.10), rgba(var(--ios-accent-rgb),0.05));
+    border: 1px solid rgba(var(--ios-accent-rgb),0.25);
+  }
+  
+  html.zzuli-ios-theme.zzuli-dark .zzuli_chip[data-kind="limit"] { 
+    background: linear-gradient(135deg, rgba(var(--ios-accent-rgb),0.32), rgba(var(--ios-accent-rgb),0.18));
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar { 
+    display:flex; 
+    gap:14px; 
+    margin-top:16px;
+    animation: zzuliActionsFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes zzuliActionsFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn { 
+    cursor:pointer; 
+    border:none; 
+    border-radius: 24px; 
+    padding:12px 24px; 
+    font-size:15px; 
+    font-weight:600; 
+    background: linear-gradient(135deg, var(--ios-accent) 0%, rgba(var(--ios-accent-rgb),0.85) 100%);
+    color:#fff !important; 
+    box-shadow: 0 4px 16px -4px rgba(var(--ios-accent-rgb),0.6), 0 2px 8px -2px rgba(var(--ios-accent-rgb),0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration:none !important; 
+    display:inline-flex; 
+    align-items:center; 
+    gap:8px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn:hover { 
+    transform: translateY(-3px) scale(1.02); 
+    box-shadow:0 8px 24px -6px rgba(var(--ios-accent-rgb),0.7), 0 4px 12px -2px rgba(var(--ios-accent-rgb),0.5);
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn.secondary { 
+    background: linear-gradient(135deg, rgba(var(--ios-accent-rgb),0.22) 0%, rgba(var(--ios-accent-rgb),0.10) 100%);
+    color: var(--ios-accent) !important; 
+    box-shadow:0 2px 8px -2px rgba(var(--ios-accent-rgb),0.3);
+    border:1px solid rgba(var(--ios-accent-rgb),0.4);
+  }
+  
+  html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn.secondary:hover { 
+    background: linear-gradient(135deg, rgba(var(--ios-accent-rgb),0.35) 0%, rgba(var(--ios-accent-rgb),0.20) 100%);
+    box-shadow:0 4px 16px -4px rgba(var(--ios-accent-rgb),0.5);
+  }
 
-  /* 小节 Panel 视觉强化 */
-  html.zzuli-ios-theme .panel.zzuli-problem-section { position:relative; border-radius:22px; overflow:hidden; }
-  html.zzuli-ios-theme .panel.zzuli-problem-section::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background: linear-gradient(var(--ios-accent), rgba(var(--ios-accent-rgb),0.4)); }
-  html.zzuli-ios-theme.zzuli-dark .panel.zzuli-problem-section::before { background: linear-gradient(rgba(var(--ios-accent-rgb),0.85), rgba(var(--ios-accent-rgb),0.35)); }
-  html.zzuli-ios-theme .panel.zzuli-problem-section .panel-heading { font-weight:600 !important; font-size:16px !important; background: linear-gradient(to right, rgba(var(--ios-accent-rgb),0.16), rgba(var(--ios-accent-rgb),0.06)) !important; border-bottom:1px solid var(--zzuli-separator) !important; }
-  html.zzuli-ios-theme.zzuli-dark .panel.zzuli-problem-section .panel-heading { background: linear-gradient(to right, rgba(var(--ios-accent-rgb),0.28), rgba(var(--ios-accent-rgb),0.10)) !important; }
+  /* 小节 Panel 视觉强化 - 玻璃态卡片效果 */
+  html.zzuli-ios-theme .panel.zzuli-problem-section { 
+    position:relative; 
+    border-radius:24px; 
+    overflow:hidden;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: var(--zzuli-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: zzuliSectionFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+  
+  html.zzuli-ios-theme .panel.zzuli-problem-section:nth-child(1) { animation-delay: 0.1s; }
+  html.zzuli-ios-theme .panel.zzuli-problem-section:nth-child(2) { animation-delay: 0.2s; }
+  html.zzuli-ios-theme .panel.zzuli-problem-section:nth-child(3) { animation-delay: 0.3s; }
+  html.zzuli-ios-theme .panel.zzuli-problem-section:nth-child(4) { animation-delay: 0.4s; }
+  html.zzuli-ios-theme .panel.zzuli-problem-section:nth-child(5) { animation-delay: 0.5s; }
+  
+  @keyframes zzuliSectionFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  html.zzuli-ios-theme .panel.zzuli-problem-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px -8px rgba(var(--ios-accent-rgb), 0.25), var(--zzuli-shadow);
+  }
+  
+  html.zzuli-ios-theme .panel.zzuli-problem-section::before { 
+    content:''; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    bottom:0; 
+    width:5px; 
+    background: linear-gradient(180deg, var(--ios-accent) 0%, rgba(var(--ios-accent-rgb),0.5) 100%);
+    box-shadow: 2px 0 8px rgba(var(--ios-accent-rgb), 0.3);
+  }
+  
+  html.zzuli-ios-theme.zzuli-dark .panel.zzuli-problem-section::before { 
+    background: linear-gradient(180deg, rgba(var(--ios-accent-rgb),0.95) 0%, rgba(var(--ios-accent-rgb),0.45) 100%);
+  }
+  
+  html.zzuli-ios-theme .panel.zzuli-problem-section .panel-heading { 
+    font-weight:700 !important; 
+    font-size:17px !important; 
+    background: linear-gradient(to right, rgba(var(--ios-accent-rgb),0.18) 0%, rgba(var(--ios-accent-rgb),0.08) 100%) !important;
+    border-bottom:1px solid var(--zzuli-separator) !important;
+    padding: 14px 18px 14px 22px !important;
+    letter-spacing: 0.3px;
+  }
+  
+  html.zzuli-ios-theme.zzuli-dark .panel.zzuli-problem-section .panel-heading { 
+    background: linear-gradient(to right, rgba(var(--ios-accent-rgb),0.32) 0%, rgba(var(--ios-accent-rgb),0.12) 100%) !important;
+  }
+  
+  html.zzuli-ios-theme .panel.zzuli-problem-section .panel-body {
+    padding: 18px 22px !important;
+    line-height: 1.7;
+  }
 
   /* 样例区代码块微调 */
-  html.zzuli-ios-theme pre.content { font-size:13.5px; line-height:1.5; }
-  html.zzuli-ios-theme .sampledata { font-family: ui-monospace, Menlo, Consolas, monospace; }
+  html.zzuli-ios-theme pre.content { 
+    font-size:13.5px; 
+    line-height:1.6;
+    box-shadow: inset 0 0 0 1px rgba(var(--ios-accent-rgb),0.08), var(--zzuli-shadow);
+  }
+  
+  html.zzuli-ios-theme .sampledata { 
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-weight: 500;
+  }
+
+  /* Copy 按钮美化 */
+  html.zzuli-ios-theme .panel-heading a[href*="Copy"] {
+    float: right;
+    margin-left: 12px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(var(--ios-accent-rgb),0.15);
+    color: var(--ios-accent) !important;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none !important;
+    border: 1px solid rgba(var(--ios-accent-rgb),0.3);
+  }
+  
+  html.zzuli-ios-theme .panel-heading a[href*="Copy"]:hover {
+    background: var(--ios-accent);
+    color: #fff !important;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(var(--ios-accent-rgb), 0.4);
+  }
 
   /* 底部 footer 中的旧方括号隐藏（仅在我们生成新按钮后附加类时生效） */
   html.zzuli-ios-theme .panel-footer.zzuli-clean-brackets { font-size:0; }
   html.zzuli-ios-theme .panel-footer.zzuli-clean-brackets a { font-size:14px; }
 
   /* 让原 footer 转为透明容器（我们另建按钮栏） */
-  html.zzuli-ios-theme .panel-footer.zzuli-problem-footer { background:transparent !important; border:none !important; box-shadow:none !important; padding:0 !important; margin-top:12px; }
+  html.zzuli-ios-theme .panel-footer.zzuli-problem-footer { 
+    background:transparent !important; 
+    border:none !important; 
+    box-shadow:none !important; 
+    padding:0 !important; 
+    margin-top:12px; 
+  }
+  
+  /* 响应式优化 */
+  @media (max-width: 768px) {
+    html.zzuli-ios-theme .zzuli-problem-header {
+      padding: 24px 20px 22px;
+      border-radius: 20px;
+    }
+    html.zzuli-ios-theme .zzuli-problem-title {
+      font-size: 24px;
+    }
+    html.zzuli-ios-theme .zzuli-problem-actions-bar {
+      flex-wrap: wrap;
+    }
+    html.zzuli-ios-theme .zzuli-problem-actions-bar .zzuli-action-btn {
+      flex: 1 1 auto;
+      justify-content: center;
+      padding: 10px 18px;
+      font-size: 14px;
+    }
+  }
 
   /* ===== 题目详情页专属增强结束 ===== */
 
@@ -725,7 +976,7 @@
   html.zzuli-ios-theme .zzuli-pie-legend .item { display: flex; align-items: center; gap: 8px; background: rgba(var(--ios-accent-rgb),0.06); border: 1px solid var(--zzuli-separator); padding: 6px 10px; border-radius: 12px; transition: all var(--ios-transition); }
   html.zzuli-ios-theme .zzuli-pie-legend .item:hover { background: rgba(var(--ios-accent-rgb),0.12); transform: translateX(2px); }
   html.zzuli-ios-theme.zzuli-dark .zzuli-pie-legend .item { background: rgba(255,255,255,0.06); }
-  html.zzuli-ios-theme .zzuli-pie-legend .dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 1px var(--zzuli-separator) inset, 0 2px 4px rgba(0,0,0,0.1); }
+  html.zzuli-ios-theme .zzuli-pie-legend .dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); }
   html.zzuli-ios-theme .zzuli-pie-legend .label { font-weight: 600; }
   html.zzuli-ios-theme .zzuli-pie-legend .val { margin-left: 4px; color: var(--zzuli-muted); }
   html.zzuli-ios-theme .zzuli-pie-center { position: absolute; text-align: center; font-size: 12px; color: var(--zzuli-text); }
